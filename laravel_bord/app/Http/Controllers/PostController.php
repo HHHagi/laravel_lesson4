@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 use App\Models\Post;
 use App\Models\User;
@@ -39,7 +41,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         $posts = new Post;
         $form  = $request->all();
@@ -47,17 +49,6 @@ class PostController extends Controller
         $posts->user_id = Auth::user()->id;
         $posts->save();
         return redirect('/posts');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -70,6 +61,7 @@ class PostController extends Controller
     {
         $post = Post::find($post_id);
         return view('laravel_views.posts.edit', compact('post'));
+    
     }
 
     /**
@@ -79,7 +71,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePostRequest $request, $id)
     {
         $posts = Post::find($id);
         $form  = $request->all();
