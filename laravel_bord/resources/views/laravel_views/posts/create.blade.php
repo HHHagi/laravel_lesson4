@@ -6,12 +6,12 @@
     @csrf
     <p>タイトル</p>
     @error('title')
-<div>{{$message}}</div>
+    <div>{{$message}}</div>
     @enderror
     <textarea name="title" style="width:100%;"></textarea>
     <p>メッセージ</p>
     @error('message')
-<div>{{$message}}</div>
+    <div>{{$message}}</div>
     @enderror
     <textarea type="text" name="message" style="width:100%; height: 300px;"></textarea>
     <button type="submit" class="btn btn--blue">追加</button>
