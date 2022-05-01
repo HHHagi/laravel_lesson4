@@ -24,5 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('posts', 'App\Http\Controllers\PostController', ['only' => ['index', 'create', 'store', 'edit', 'destroy', 'update']]);
 
-Route::get('/post/like/{id}', 'App\Http\Controllers\PostController@like')->name('post.like');
-Route::get('/post/unlike/{id}', 'App\Http\Controllers\PostController@unlike')->name('post.unlike');
+Route::get('/post/{id}/like', 'App\Http\Controllers\PostController@like')->name('post.like');
+Route::get('/post/{id}/unlike', 'App\Http\Controllers\PostController@unlike')->name('post.unlike');
