@@ -14,8 +14,20 @@
         <button type="submit" class="btn btn--orange">削除する</button>
     </form>
     @endif
+    <div>
+        @if($post->is_liked_by_auth_user())
+        <a href="{{ route('post.unlike', ['id' => $post->id]) }}">
+            <i class="fas fa-heart"></i>
+        </a>
+        <span>{{ $post->likes->count() }}</span>
+        @else
+        <a href="{{ route('post.like', ['id' => $post->id]) }}">
+            <i class="far fa-heart"></i>
+        </a>
+        <span>{{ $post->likes->count() }}</span>
+        @endif
+    </div>
 </article>
 @endforeach
-
 
 @endsection

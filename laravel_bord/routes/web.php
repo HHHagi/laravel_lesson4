@@ -23,3 +23,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('posts', 'App\Http\Controllers\PostController', ['only' => ['index', 'create', 'store', 'edit', 'destroy', 'update']]);
+
+Route::get('/post/{id}/like', 'App\Http\Controllers\PostController@like')->name('post.like');
+Route::get('/post/{id}/unlike', 'App\Http\Controllers\PostController@unlike')->name('post.unlike');
